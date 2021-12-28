@@ -3,30 +3,12 @@ import os
 import warnings
 from multiprocessing import Pool
 
-import librosa
-import librosa.display
 import numpy as np
 from PIL import Image
 
-from utils import FMA_RAW, OUTPUT_FOLDER
+from utils import FMA_RAW, OUTPUT_FOLDER, compute_mfcc, get_audio_infos
 
 warnings.filterwarnings('ignore')
-
-
-def compute_mfcc(filepath, duration=None):
-    y, sr = librosa.load(filepath, sr=None, mono=True, duration=duration)
-
-    mfcc = librosa.feature.mfcc(y, sr=sr, n_mfcc=13)
-    mfcc_d = librosa.feature.delta(mfcc)
-    mfcc_dd = librosa.feature.delta(mfcc, order=2)
-
-    return np.concatenate((mfcc, mfcc_d, mfcc_dd))
-
-
-def get_audio_infos(filepath):
-    y, sr = librosa.load(filepath, sr=None, mono=True)
-    return sr, librosa.get_duration(y, sr=sr)
-
 
 subset = "medium"  # change this
 

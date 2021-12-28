@@ -2,18 +2,10 @@
 
 import os
 
-import pandas as pd
-
-from utils import OUTPUT_FOLDER, DATA_FOLDER, FEATURES_FOLDER
+from utils import OUTPUT_FOLDER, DATA_FOLDER, FEATURES_FOLDER, load_tracks
 
 if __name__ == "__main__":
-    tracks = pd.read_csv(os.path.join(DATA_FOLDER, "tracks.csv"), index_col=0, header=[0, 1])
-    tracks['track', 'genre_top'] = tracks['track', 'genre_top'].astype('category')
-
-    # sort and filter the subsets
-    subset_dtype = pd.CategoricalDtype(categories=('small', 'medium', 'large'), ordered=True)
-    tracks['set', 'subset'] = tracks['set', 'subset'].astype(subset_dtype)
-    tracks = tracks[tracks['set', 'subset'] <= 'medium']
+    tracks = load_tracks(DATA_FOLDER, subset="medium")
 
     for index, row in tracks.iterrows():
         tid_str = f"{index:06d}"
