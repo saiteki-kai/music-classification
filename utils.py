@@ -27,14 +27,17 @@ def load_tracks(datafolder, subset=None):
     return tracks
 
 
-def compute_mfcc(filepath, duration=None):
+def compute_mfcc(filepath, duration=None, concatenate=True):
     y, sr = librosa.load(filepath, sr=None, mono=True, duration=duration)
 
     mfcc = librosa.feature.mfcc(y, sr=sr, n_mfcc=13)
     mfcc_d = librosa.feature.delta(mfcc)
     mfcc_dd = librosa.feature.delta(mfcc, order=2)
 
-    return np.concatenate((mfcc, mfcc_d, mfcc_dd))
+    if concatenate:
+        return np.concatenate((mfcc, mfcc_d, mfcc_dd))
+
+    return mfcc, mfcc_d, mfcc_dd
 
 
 def get_audio_infos(filepath):
