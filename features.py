@@ -6,55 +6,17 @@ from multiprocessing import Pool
 import numpy as np
 from PIL import Image
 
+from bad_samples import get_ignore_list
 from utils import FMA_RAW, OUTPUT_FOLDER, compute_mfcc, get_audio_infos
 
 warnings.filterwarnings('ignore')
-
-subset = "medium"  # change this
 
 if __name__ == "__main__":
     files = glob.glob(os.path.join(FMA_RAW, "**/*.mp3"), recursive=True)
 
     # remove files with a duration of less than 30s
-    # https://github.com/mdeff/fma/wiki#excerpts-shorter-than-30s-and-erroneous-audio-length-metadata
 
-    ignore_list_small = [
-        "098/098565.mp3",
-        "098/098567.mp3",
-        "098/098569.mp3",
-        "099/099134.mp3",
-        "108/108925.mp3",
-        "133/133297.mp3"
-    ]
-
-    ignore_list_medium = [
-        "001/001486.mp3",
-        "005/005574.mp3",
-        "065/065753.mp3",
-        "080/080391.mp3",
-        "098/098558.mp3",
-        "098/098559.mp3",
-        "098/098560.mp3",
-        "098/098565.mp3",
-        "098/098566.mp3",
-        "098/098567.mp3",
-        "098/098568.mp3",
-        "098/098569.mp3",
-        "098/098571.mp3",
-        "099/099134.mp3",
-        "105/105247.mp3",
-        "108/108924.mp3",
-        "108/108925.mp3",
-        "126/126981.mp3",
-        "127/127336.mp3",
-        "133/133297.mp3",
-        "143/143992.mp3"
-    ]
-
-    if subset == "small":
-        ignore_list = ignore_list_small
-    else:
-        ignore_list = ignore_list_medium
+    ignore_list = get_ignore_list("medium")
 
     for f in ignore_list:
         f = os.path.join(FMA_RAW, f)
