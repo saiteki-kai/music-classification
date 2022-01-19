@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University Assignment Title Page 
+% LaTeX Template
+% Version 1.0 (27/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLEPAGE
+%----------------------------------------------------------------------------------------
+
+\input{titlepage.tex}
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+The ABSTRACT is not a part of the body of the report itself. 
+Rather, the abstract is a brief summary of the report contents that is often separately circulated so potential readers can decide whether to read the report. 
+The abstract should very concisely summarize the whole report: why it was written, what was discovered or developed, and what is claimed to be the significance of the effort. 
+The abstract does not include figures or tables, and only the most significant numerical values or results should be given.
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	SECTIONS
+%----------------------------------------------------------------------------------------
+
+\input{sections/1_introduction.tex}
+\input{sections/2_datasets.tex}
+\input{sections/3_approach.tex}
+\input{sections/4_results.tex}
+\input{sections/5_discussion.tex}
+\input{sections/6_conclusion.tex}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\section*{References}
+
+The references section should contain complete citations following standard form.  
+The references should be numbered and listed in the order they were cited in the body of the report. 
+In the text of the report, a particular reference can be cited by using a numerical number in brackets as \cite{Lee2015} that corresponds to its number in the reference list. 
+\LaTeX provides several styles to format the references
+
+\bibliographystyle{IEEEtran}
+\bibliography{references.bib}
+
+\end{document}
