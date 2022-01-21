@@ -9,12 +9,10 @@ from PIL import Image
 from utils import FEATURES_FOLDER
 
 if __name__ == "__main__":
-    subset = "small"
-
-    path = os.path.join(FEATURES_FOLDER, subset, "training", "**", "*.tif")
+    path = os.path.join(FEATURES_FOLDER, 'mel', "training", "**", "*.tif")
     files = glob.glob(path)
 
-    input_size = (13, 2580)
+    input_size = (128, 128)
 
     mean = np.zeros(input_size, dtype=np.float64)
     var = np.zeros(input_size, dtype=np.float64)
@@ -28,4 +26,4 @@ if __name__ == "__main__":
 
             mean = new_mean
 
-    np.save("scaling", (mean, np.sqrt(var)))
+    np.save("scaling_meanstd", (mean, np.sqrt(var)))

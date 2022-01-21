@@ -1,64 +1,48 @@
-import glob
 import os
+import glob
 import warnings
+
+import librosa
+from PIL import Image
 from multiprocessing import Pool
 
-import numpy as np
-from PIL import Image
-
 from bad_samples import get_ignore_list
-from utils import FMA_RAW, OUTPUT_FOLDER, compute_mfcc, get_audio_infos
+from utils import FMA_RAW, OUTPUT_FOLDER, SUBSET, compute_melspectrogram, spectrogram_to_image, split_audio
 
-warnings.filterwarnings('ignore')
+warnings.filterwarnings("ignore")
 
 if __name__ == "__main__":
-    subset = "small"
-
-    files = glob.glob(os.path.join(FMA_RAW, subset, "**/*.mp3"), recursive=True)
+    files = glob.glob(os.path.join(FMA_RAW, SUBSET, "**/*.mp3"), recursive=True)
 
     # remove files with a duration of less than 30s
 
-    ignore_list = get_ignore_list(subset)
+    ignore_list = get_ignore_list(SUBSET)
 
     for f in ignore_list:
-        f = os.path.join(FMA_RAW, subset, f)
-        if f in files:
-            files.remove(f)
-
-    # remove the files with a sample rate other than 44100
-
-    bad_sr_files = np.load(os.path.join(OUTPUT_FOLDER, "bad_samples_files.npy"))
-    print("files with bad sample rate: ", len(bad_sr_files))
-
-    for f in bad_sr_files:
-        f = os.path.join(FMA_RAW, subset, *f.split("/")[-2:])
+        f = os.path.join(FMA_RAW, SUBSET, f)
         if f in files:
             files.remove(f)
 
     print("files remaining: ", len(files))
 
-
     def compute(filepath):
-        m, _, _ = compute_mfcc(filepath, duration=29.95, concatenate=False)
-        return m
+        y, sr = librosa.load(filepath, sr=22050, mono=True, duration=29.70)
+        segments = split_audio(y, n_segments=1)
+        return list(map(lambda s : compute_melspectrogram(s, sr), segments))
 
     # compute features using a thread pool
 
-    with Pool(processes=6) as pool:
+    nb_workers = 8 #int(1.5 * len(os.sched_getaffinity(0)))
+    with Pool(processes=nb_workers) as pool:
         it = pool.imap(compute, files, chunksize=250)
         for i, data in enumerate(it):
-            try:
-                if data.shape[1] != 2580:
-                    print(data.shape, files[i])
-
-                fp = '_'.join(files[i].split('/')[-2:])
+            for k, segment in enumerate(data):
+                fp = "_".join(files[i].split("/")[-2:])
                 fp = os.path.splitext(fp)[0]
-                fp = os.path.join(OUTPUT_FOLDER, subset, f"{fp}.tif")
-                Image.fromarray(data).save(fp)
+                fp = os.path.join(OUTPUT_FOLDER, SUBSET, f"{fp}_s{k}.png")
 
-                if i % 500 == 0:
-                    print(i)
+                img = spectrogram_to_image(segment)
+                img.save(fp)
 
-            except BaseException as e:
-                print(i, get_audio_infos(files[i]))
-                print(e)
+            if i % 250 == 0:
+                print(i)
