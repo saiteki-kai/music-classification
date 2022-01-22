@@ -1,19 +1,36 @@
 \section{The Methodological Approach}
 
-This is the central and most important section of the report.
-Its objective must be to show, with linearity and clarity, the steps that have led to the definition of a decision model.
-The description of the working hypotheses, confirmed or denied, can be found in this section together with the description of the subsequent refining processes of the models.
-Comparisons between different models (e.g. heuristics vs. optimal models) in terms of quality of solutions, their explainability and execution times are welcome.
+\subsection{Handcrafted Features}
+We started with a traditional approach to handcrafted features [GIUSEPPE SPIEGA].
 
-Do not attempt to describe all the code in the system, and do not include large pieces of code in this section, use pseudo-code where necessary.
-Complete source code should be provided separately (in Appendixes, as separated material or as a link to an on-line repo).
-Instead pick out and describe just the pieces of code which, for example:
+\subsection{Convolutional Neural Network}
+According to the state of the art, the approach that now seems to perform better for these tasks is the one based on MFCC and Convolutional Neural Network. 
+
+We started with the architecture suggested by "Daniel Kostrzewa" \cite{kostrzewa2021music}.
+"Layer 1 and 2 have both 64 kernels each, whereas layers 3 and 4 have 128 kernels. The kernel size of all layers is equal to 5. After each layer, there is 2-D max pooling applied with kernel size and stride equal 2. In every convolutional layer, ReLU is used as an activation function. Batch normalization is performed afterward. The convolutional layers are followed by one fully connected linear layer with linear activation function and the final output of 8 nodes" \cite{kostrzewa2021music}. Dropout probability is 0.20 .
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{images/CNN-architecture.png}
+\caption{The architecture suggested by "Daniel Kostrzewa" \cite{kostrzewa2021music}.}
+\label{fig:CNN-architecture}
+\end{figure}
+
+We then tried to perform a hyper-parameter optimization o this architecture.
+Not being able to do an optimization from start to finish and on all the hyper-parameters space, we decided to use HyperBand and to optimize only some hyper-parameters.
+
+The hyper-parameters considered for the optimization were: 
 \begin{itemize}
-    \item are especially critical to the operation of the system;
-    \item you feel might be of particular interest to the reader for some reason;
-    \item illustrate a non-standard or innovative way of implementing an algorithm, data structure, etc..
+    \item The size of the kernel (fixed on each layer) in [3,6].
+    \item The number of kernels for each layer in [32, 256].
+    \item The probability of dropout in \{0.2, 0.25, 0.5\}.
+    \item The initial learning rate in \{0.01, 0.001, 0.0001\}.
 \end{itemize}
 
-You should also mention any unforeseen problems you encountered when implementing the
-system and how and to what extent you overcame them. Common problems are:
-difficulties involving existing software.
+The optimization of the network has led to have, in the case without date augmentation, the first layer has 32 kernels, the second one has 128, the third 192 and the fourth has 98. The kernel size of all layers is equal to 6. Dropout probability is 0.25 and initial learning rate is 0.001.
+
+While in the case with data augmentation we have, the first layer has X kernels, the second one has X, the third X and the fourth has X. The kernel size of all layers is equal to X. Dropout probability is X and initial learning rate is X.
+
+\subsection{Feature extraction with Convolutional Neural Network}
+
+
