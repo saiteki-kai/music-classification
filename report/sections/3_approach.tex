@@ -1,7 +1,21 @@
 \section{The Methodological Approach}
 
+% - proviamo le features handcrafted
+% - cerchiamo di migliorarle con le cnn
+%     - from scratch (come nel paper)
+%     - data augmentation
+%     - features extraction (con reti pretrainate)
+
 \subsection{Handcrafted Features}
-We started with a traditional approach to handcrafted features [GIUSEPPE SPIEGA].
+The first model tested was a simple neural network on handcrafted features of the small subset.
+% Next, a CNN model was tested to try to improve the performance of the handcrafted one.
+
+The split of the data was the same as that provided by the dataset (6400 train, 800 validation and 800 test).
+The number of features was 518. The features have been standardized on the statistics of the training set.
+
+The architecture of the neural network was found by testing a different number of neurons for two layers. 
+The best parameters found were (512, 256).
+Adam was used as an optimizer with a learning rate of 0.0001 and a batch size of 32.
 
 \subsection{Convolutional Neural Network}
 According to the state of the art, the approach that now seems to perform better for these tasks is the one based on MFCC and Convolutional Neural Network. 
@@ -16,7 +30,7 @@ We started with the architecture suggested by "Daniel Kostrzewa" \cite{kostrzewa
 \label{fig:CNN-architecture}
 \end{figure}
 
-We then tried to perform a hyper-parameter optimization o this architecture.
+We then tried to perform a hyper-parameter optimization on this architecture.
 Not being able to do an optimization from start to finish and on all the hyper-parameters space, we decided to use HyperBand and to optimize only some hyper-parameters.
 
 The hyper-parameters considered for the optimization were: 
@@ -32,5 +46,4 @@ The optimization of the network has led to have, in the case without date augmen
 While in the case with data augmentation we have, the first layer has X kernels, the second one has X, the third X and the fourth has X. The kernel size of all layers is equal to X. Dropout probability is X and initial learning rate is X.
 
 \subsection{Feature extraction with Convolutional Neural Network}
-
 

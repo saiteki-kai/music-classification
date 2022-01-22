@@ -1,4 +1,46 @@
 \section{Datasets}
-In this section the available data sets must be presented.
-The term dataset refers to any type of information source, for example web services for geolocation fall into this category.
-In addition, all necessary data manipulation processes, such as cleaning and enrichment with external sources, must be presented and discussed.
+% In this section the available data sets must be presented.
+% The term dataset refers to any type of information source, for example web services for geolocation fall into this category.
+% In addition, all necessary data manipulation processes, such as cleaning and enrichment with external sources, must be presented and discussed.
+
+The dataset chosen is the Free Music Archive (FMA).
+The dataset contains 106574 high quality audio tracks lasting approximately 30 seconds. All the tracks are common creative licensed.
+
+Each track is associated with additional information about the artist (name, location, bio, etc.), the album (title, listens, comments, etc.) and the track itself (title, creation date, duration, genres, etc.). 
+
+The genres are organized in a hierarchy of 161 unbalanced classes of different genres.
+
+%Pre-calculated features are also provided: STFT Chromagram, CQT Chromagram, Chroma Energy Normalized (CENS), Tonal Centroid Features (Tonnetz),
+%RMSE, Zero Crossing Rate, Spectral Centroid, Spectral Bandwidth, Spectral Contrast, Spectral Rolloff, Mel Frequency Cepstral Coefficients (MFCC). 
+%Statistical moments are provided for each of these features: mean, std, skew, kurtosis, median, min, max.
+Pre-computed features are also provided such as the statistical moments of some spectral and temporal features.
+
+The dataset propose a train/validation/test (80\%/10\%/10\%) split and three subsets (small, medium, large).
+In this work only the small one was used which consists of 8000 tracks and 8 balanced genres.
+% \begin{itemize}
+%   \item Small: 8000 tracks, 8 balanced genres 
+%   \item Medium: 25000 tracks, 16 unbalanced genres
+%   \item Large: 106574 tracks, 161 unbalanced genres
+% \end{itemize}
+
+\subsection{Features}
+% TODO: introduzione al metodo con CNN?
+
+Analyzing the raw audio tracks it was found that the sampling frequency varies between 22050Hz and 48000Hz. 
+Most of the tracks have a sampling rate of 44100Hz.
+It was decided to resample all tracks to 22050Hz.
+
+Furthermore, it has been found that the durations of the audio tracks are not all 30 seconds long.
+The range of duration values that was found was from 0 to 30.02 seconds.
+Then the length was reduced for all tracks to 29.97 seconds and the shorter length samples were removed due to incorrect length metadata.
+
+% TODO: mettere il link? https://github.com/mdeff/fma/wiki#excerpts-shorter-than-30s-and-erroneous-audio-length-metadata
+
+The Mel spectrogram was calculated on the raw audio with the following parameters: 
+\begin{itemize}
+  \item Sample rate: 22050Hz
+  \item Window Size: 2048
+  \item Hop Length: 512
+  \item Mel bins: 128
+\end{itemize}
+
