@@ -1,4 +1,8 @@
-# https://github.com/mdeff/fma/wiki#excerpts-shorter-than-30s-and-erroneous-audio-length-metadata
+"""Define the list of files to be ignored.
+
+More details here:
+https://github.com/mdeff/fma/wiki#excerpts-shorter-than-30s-and-erroneous-audio-length-metadata
+"""
 
 ignore_list_small = [
     "098/098565.mp3",
@@ -6,7 +10,7 @@ ignore_list_small = [
     "098/098569.mp3",
     "099/099134.mp3",
     "108/108925.mp3",
-    "133/133297.mp3"
+    "133/133297.mp3",
 ]
 
 ignore_list_medium = [
@@ -30,11 +34,12 @@ ignore_list_medium = [
     "126/126981.mp3",
     "127/127336.mp3",
     "133/133297.mp3",
-    "143/143992.mp3"
+    "143/143992.mp3",
 ]
 
 
 def get_ignore_list(subset):
+    """Returns the list to ignore based on the subset of the dataset."""
     if subset == "small":
         ignore_list = ignore_list_small
     else:

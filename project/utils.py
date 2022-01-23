@@ -1,16 +1,14 @@
 import os
 
+import librosa
 import numpy as np
 import pandas as pd
-
-import librosa
 from PIL import Image
 
-
-DATA_FOLDER = os.path.join(os.getcwd(), "data")
-FMA_RAW = os.path.join(DATA_FOLDER, "raw")
-FEATURES_FOLDER = os.path.join(DATA_FOLDER, "features")
-OUTPUT_FOLDER = os.path.join(DATA_FOLDER, "output")
+DATA_FOLDER = os.path.abspath(os.path.join("..", "data"))
+FMA_RAW = os.path.abspath(os.path.join(DATA_FOLDER, "raw"))
+FEATURES_FOLDER = os.path.abspath(os.path.join(DATA_FOLDER, "features"))
+OUTPUT_FOLDER = os.path.abspath(os.path.join(DATA_FOLDER, "output"))
 
 SUBSET = "small"
 
@@ -32,6 +30,13 @@ def load_tracks(datafolder, subset=None):
             raise ValueError(f"subset {subset} is not valid")
 
     return tracks
+
+
+def load_handcrafted(datafolder):
+    path = os.path.join(datafolder, "features.csv")
+    features = pd.read_csv(path, index_col=0, header=[0, 1, 2])
+
+    return features
 
 
 def compute_melspectrogram(y, sr):
@@ -58,12 +63,13 @@ def split_audio(y, n_segments=10):
 
     segments = []
     for i in range(n_segments):
-        s = y[i * samples_for_segment : i * samples_for_segment + samples_for_segment]
+        s = y[i * samples_for_segment: i * samples_for_segment + samples_for_segment]
         segments.append(s)
 
     return segments
 
 
 def get_audio_infos(filepath):
+    """Get the sample rate and duration of a given audio file."""
     y, sr = librosa.load(filepath, sr=None, mono=True)
     return sr, librosa.get_duration(y, sr=sr)
