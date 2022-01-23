@@ -6,7 +6,7 @@ import os
 import numpy as np
 from PIL import Image
 
-from project.utils import FEATURES_FOLDER, OUTPUT_FOLDER
+from project.config import FEATURES_FOLDER, OUTPUT_FOLDER
 
 
 def compute_running_scaling(files, input_size):

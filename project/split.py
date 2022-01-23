@@ -2,7 +2,8 @@
 
 import os
 
-from project.utils import OUTPUT_FOLDER, DATA_FOLDER, FEATURES_FOLDER, SUBSET, load_tracks
+from project.config import OUTPUT_FOLDER, DATA_FOLDER, FEATURES_FOLDER, SUBSET
+from project.utils.fma import load_tracks
 
 if __name__ == "__main__":
     tracks = load_tracks(DATA_FOLDER, subset=SUBSET)

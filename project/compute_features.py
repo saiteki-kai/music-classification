@@ -12,15 +12,9 @@ import warnings
 
 import librosa
 
-from project.bad_samples import get_ignore_list
-from project.utils import (
-    FMA_RAW,
-    OUTPUT_FOLDER,
-    SUBSET,
-    spectrogram_to_image,
-    split_audio,
-    compute_melspectrogram
-)
+from project.config import FMA_RAW, OUTPUT_FOLDER, SUBSET
+from project.utils.bad_samples import get_ignore_list
+from project.utils.features import spectrogram_to_image, split_audio, compute_melspectrogram
 
 warnings.filterwarnings("ignore")
 
