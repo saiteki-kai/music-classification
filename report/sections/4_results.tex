@@ -290,14 +290,14 @@ conv5\_block1\_2\_relu & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/best_vgg16_svmrbf.jpg}
-    \caption{VGG16 - SVM RBF}
+    \caption{VGG16 - \text{block5\_pool} - SVM RBF}
     \label{fig:best_vgg16_svmrbf_cm}
   \end{subfigure}
   \hfill
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/best_resnet50_svmrbf.jpg}
-    \caption{ResNet50 - SVM RBF}
+    \caption{ResNet50 - \text{conv5\_block1\_2\_relu} - SVM RBF}
     \label{fig:best_resnet50_svmrbf_cm}
   \end{subfigure}
   \caption{Confusion matrix of the best model for the two CNN architectures.}
@@ -308,12 +308,12 @@ conv5\_block1\_2\_relu & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|}
       \hline
-      Model          & Test Time(CPU) & Test Time(GPU) & svm rbf   \\ \hline
+      Model          & Test Time(CPU) & Test Time(GPU) & svm rbf(CPU)   \\ \hline
       vgg16\_best    & 73.2190 ms     & 23.9014 ms      & 2.6992 ms \\ \hline
       resnet50\_best & 51.3436 ms     & 23.7502 ms      & 3.2712 ms \\ \hline
     \end{tabular}%
   }
-  \caption{inference time for the best cut level and ml classifier for vgg16 and resnet50.}
+  \caption{inference time per image with 10 runs, for the best cut level for vgg16 and resnet50 with the rbf svm.}
   \label{tab:my-table4}
 \end{table}
 
