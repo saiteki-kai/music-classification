@@ -125,3 +125,82 @@ Tuned CNN augmented & 0.4450              & 1.7493          \\ \hline
 \caption{Tuned CNN's confusion matrix with data augmentation.}
 \label{fig:cf_tuned_aug}
 \end{figure}
+
+
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|ccc|}
+\hline
+\multirow{2}{*}{Cut Level} & \multirow{2}{*}{Size} & \multirow{2}{*}{Size after PCA} & \multirow{2}{*}{PCA value} & \multirow{2}{*}{Model} & \multicolumn{3}{c|}{Accuracy}                                                           \\ \cline{6-8} 
+                            &                       &                                 &                            &                        & \multicolumn{1}{c|}{svm linear}    & \multicolumn{1}{c|}{svm rbf}       & mlp           \\ \hline
+Fc2                        & 4096                  & 1480                            & 0.99                       & VGG16                  & \multicolumn{1}{c|}{0.4440/0.4003} & \multicolumn{1}{c|}{0.5168/0.4454} & 0.4795/0.4191 \\ \hline
+Fc2                        & 4096                  & 429                             & 0.95                       & VGG16                  & \multicolumn{1}{c|}{0.4965/0.4530} & \multicolumn{1}{c|}{0.5206/0.4542} & 0.4890/0.4361 \\ \hline
+Fc2                        & 4096                  & 153                             & 0.9                        & VGG16                  & \multicolumn{1}{c|}{0.5099/0.4586} & \multicolumn{1}{c|}{0.5195/0.4617} & 0.4920/0.4398 \\ \hline
+\end{tabular}%
+}
+\caption{...}
+\label{tab:my-table}
+\end{table}
+
+
+
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|ccc|}
+\hline
+\multirow{2}{*}{Cut Level} & \multirow{2}{*}{Size} & \multirow{2}{*}{Size after PCA} & \multirow{2}{*}{Model} & \multicolumn{3}{c|}{Accuracy}                                                                     \\ \cline{5-7} 
+                            &                       &                                 &                        & \multicolumn{1}{c|}{svm linear}    & \multicolumn{1}{c|}{svm rbf}                 & mlp           \\ \hline
+Fc2                        & 4096                  & 153                             & VGG16                  & \multicolumn{1}{c|}{0.5099/0.4586} & \multicolumn{1}{c|}{0.5195/0.4617}           & 0.4920/0.4398 \\ \hline
+Fc1                        & 4096                  & 311                             & VGG16                  & \multicolumn{1}{c|}{0.5157/0.4573} & \multicolumn{1}{c|}{0.5315/0.4837}           & 0.5076/0.4718 \\ \hline
+block5\_pool               & 7x7x512               & 1174                            & VGG16                  & \multicolumn{1}{c|}{0.4316/0.4185} & \multicolumn{1}{c|}{\textbf{0.5317/ 0.4968}} & 0.4726/0.4429 \\ \hline
+\end{tabular}%
+}
+\caption{...}
+\label{tab:my-table}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|ccc|}
+\hline
+\multirow{2}{*}{Cut Level} & \multirow{2}{*}{Size} & \multirow{2}{*}{Size after PCA} & \multirow{2}{*}{Model} & \multicolumn{3}{c|}{Accuracy}                                                                    \\ \cline{5-7} 
+                            &                       &                                 &                        & \multicolumn{1}{c|}{svm linear}    & \multicolumn{1}{c|}{svm rbf}                & mlp           \\ \hline
+avg\_pool                  & 1000                  & 87                              & ResNet50               & \multicolumn{1}{c|}{0.5268/0.4649} & \multicolumn{1}{c|}{0.5381/0.4874}          & 0.5246/0.4592 \\ \hline
+conv5\_block1\_2\_relu     & 7x7x512               & 1321                            & ResNet50               & \multicolumn{1}{c|}{0.4193/0.4104} & \multicolumn{1}{c|}{\textbf{0.5484/0.5012}} & 0.5221/0.4755 \\ \hline
+\end{tabular}%
+}
+\caption{...}
+\label{tab:my-table}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{images/best_vgg16_svmrbf.jpg}
+\caption{}
+\label{fig:best_vgg16_svmrbf_cm}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6]{images/best_resnet50_svmrbf.jpg}
+\caption{}
+\label{fig:best_resnet50_svmrbf_cm}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|}
+\hline
+Model          & Test Time(CPU) & Test Time(GPU) & svm rbf   \\ \hline
+vgg16\_best    & 60.6130 ms     & 3.2158 ms      & 4.4551 ms \\ \hline
+resnet50\_best & 28.0918 ms     & 3.1582 ms      & 4.7911 ms \\ \hline
+\end{tabular}%
+}
+\caption{...}
+\label{tab:my-table}
+\end{table}

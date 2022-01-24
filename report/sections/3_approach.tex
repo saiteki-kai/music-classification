@@ -48,5 +48,45 @@ Dropout probability was 0.25 and initial learning rate was 0.001.
 While in the case with data augmentation the optimization led to have, the first layer, the second and the third all with 64 kernels and the fourth with 96.
 The kernel size of all layers was equal to 4. Dropout probability was 0.25 and initial learning rate was 0.0001.
 
-\subsection{Feature extraction with Convolutional Neural Network}
+\subsection{Feature extraction with CNN}
+Later the approach was changed to using transfer learning as the amount of data is not large.
 
+A features extraction process was applied. Two Top-5 CNN architectures trained on ImageNet were chosen: VGG16 and ResNet50. These architectures are similar in accuracy, but different in the number of parameters.
+
+Since the considered domain differs from ImageNet's natural images, it is expected that lower levels should perform better.
+
+\vspace{5mm}
+\noindent
+The characteristics were extracted in different cut levels and each vector was standardized and then a PCA (Principal Component Analysis) was applied in order to reduce the high dimensionality due to the lower layers.
+
+\noindent
+Different values of explained variance percentage were tested on the fc2 layer of VGG16: 99\%, 95\%, 90\%.
+
+\noindent
+After the results were obtained it was found out that PCA 90\% was the best. 
+Then several cut levels were tried for VGG16 (\texttt{block5\_pool}, fc1, fc2) and for ResNet50 (\texttt{conv5\_block1\_2\_relu}, \texttt{avg\_pool})
+
+\noindent
+For computational reasons no tests were performed without PCA and at much lower levels.
+
+\newpage
+\noindent
+For this phase, the training and validation data were combined to then carry out a k-fold cross-validation with the grid search to fine-tune the machine learning models.
+
+\noindent
+Different standard classifiers were tried, linear SVM, SVM with kernel RBF and a MLP(Multi Layer Perceptron).
+
+\noindent
+The hyper-parameters considered was:
+\begin{itemize}
+    \item C: [0.01, 0.1, 1, 10] (Linear SVM).
+    \item C: [0.01, 0.1, 1, 10], gamma: [0.01, 0.001, 0.0001] (SVM RBF).
+\end{itemize}
+
+\noindent
+For the Multi Layer Perceptron the Adam optimizer was used with a batch size of 32 and a learning rate of 1e-4. The number of epochs was set to a max of 200 and early stopping was also used. 
+All layers use a relu activation function, while the last layer was a Softmax and a Cross Entropy Loss was used.
+\begin{itemize}
+    \item network architectures: [(512, 256), (512, 32), (512,)],
+    \item l2 regularization alpha: [0.01, 0.03, 0.05]
+\end{itemize}
