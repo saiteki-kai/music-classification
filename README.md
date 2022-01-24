@@ -7,13 +7,13 @@ We have `pre-processed` the dataset and you can find it [here](https://www.kaggl
 
 
 ## Models
-This folder contains the towed neural network models.
+This folder contains the trained neural network models.
 
 ## Report
 This folder contains the report, written in latex, which describes the project and the tasks performed.
 
 ## Code
-The `Notebook` contains the .ipynb files while the `Project` contais the .py files.
+The `notebooks` folder contains the .ipynb files while the `project` contains the python project with the utility functions and features extraction and processing.
 
 "CNN_audio.ipynb" is used to train a CNN like the one described in the paper by "Daniel Kostrzewa".
 
