@@ -13,8 +13,8 @@ The first model tested was a simple neural network on handcrafted features of th
 The split of the data was the same as that provided by the dataset (6400 train, 800 validation and 800 test).
 The number of features was 518. The features were standardized on the statistics of the training set.
 
-The architecture of the neural network was found by testing a different number of neurons for two layers.
-The best parameters found were (512, 256).
+The architecture of the neural network was found by testing a different number of neurons for one layer and then two layers.
+The best parameters found were (512, 256) [\ref{table:handcrafted_accuracy}].
 Adam was used as an optimizer with a learning rate of 0.0001 and a batch size of 32.
 
 \subsection{Convolutional Neural Network}
@@ -63,7 +63,7 @@ The characteristics were extracted in different cut levels and each vector was s
 Different values of explained variance percentage were tested on the fc2 layer of VGG16: 99\%, 95\%, 90\%.
 
 \noindent
-After the results were obtained it was found out that PCA 90\% was the best. 
+After the results were obtained it was found out that PCA 90\% was the best.
 Then several cut levels were tried for VGG16 (\text{block5\_pool}, fc1, fc2) and for ResNet50 (\text{conv5\_block1\_2\_relu}, \text{avg\_pool})
 
 \noindent
@@ -84,7 +84,7 @@ The hyper-parameters considered was:
 \end{itemize}
 
 \noindent
-For the Multi Layer Perceptron the Adam optimizer was used with a batch size of 32 and a learning rate of 1e-4. The number of epochs was set to a max of 200 and early stopping was also used. 
+For the Multi Layer Perceptron the Adam optimizer was used with a batch size of 32 and a learning rate of 1e-4. The number of epochs was set to a max of 200 and early stopping was also used.
 All layers use a relu activation function, while the last layer was a Softmax and a Cross Entropy Loss was used.
 \begin{itemize}
     \item network architectures: [(512, 256), (512, 32), (512,)],
