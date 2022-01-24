@@ -1,20 +1,27 @@
 \section{Results and Evaluation}
+The following results were obtained with the following hardware.
 
-The following results were obtained with the following hardware.\\
-CPU Specifications:
-\begin{itemize}
-\item Intel(R) Xeon(R)
-\item CPU Freq. of 2.30GHz
-\item 4 CPU cores
-\item 16 Gigabytes of RAM
-\end{itemize}
-GPU Specifications:
-\begin{itemize}
-\item Nvidia P100
-\item GPU Memory Clock of 1.32GHz
-\item 2 CPU cores
-\item 12 Gigabytes of RAM
-\end{itemize}
+\vspace{4mm}
+\noindent
+\begin{minipage}{0.45\textwidth}
+  CPU Specifications:
+  \begin{itemize}
+    \item Intel(R) Xeon(R)
+    \item CPU Freq. of 2.30GHz
+    \item 4 CPU cores
+    \item 16 Gigabytes of RAM
+  \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+  GPU Specifications:
+  \begin{itemize}
+    \item Nvidia P100
+    \item GPU Memory Clock of 1.32GHz
+    \item 2 CPU cores
+    \item 12 Gigabytes of RAM
+  \end{itemize}
+\end{minipage}
 
 
 \begin{table}[ht]
@@ -77,12 +84,6 @@ Tuned CNN augmented & 0.4450              & 1.7493          \\ \hline
 \label{fig:Acc_Loss_2021}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.6]{images/2021-confusion_matrix.png}
-\caption{CNN's confusion matrix.}
-\label{fig:cf_2021}
-\end{figure}
 
 \begin{figure}[ht]
 \centering
@@ -91,11 +92,21 @@ Tuned CNN augmented & 0.4450              & 1.7493          \\ \hline
 \label{fig:Acc_Loss_tuned}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.6]{images/tuned-confusion_matrix.png}
-\caption{Tuned CNN's confusion matrix.}
-\label{fig:cf_tuned}
+\begin{figure}
+  \begin{subfigure}[c]{0.475\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/2021-confusion_matrix.png}
+    \caption{Simple CNN}
+    \label{fig:cf_2021}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[c]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/tuned-confusion_matrix.png}
+      \caption{Tuned CNN}
+      \label{fig:cf_tuned}
+  \end{subfigure}
+  \caption{CNN's confusion matrix.}
 \end{figure}
 
 \begin{figure}[ht]
@@ -107,25 +118,27 @@ Tuned CNN augmented & 0.4450              & 1.7493          \\ \hline
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.6]{images/aug-2021-confusion_matrix.png}
-\caption{CNN's confusion matrix with data augmentation.}
-\label{fig:cf_2021_aug}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
 \includegraphics[scale=0.6]{images/aug-tuned-val-train.png}
 \caption{Tuned CNN's Accuracy and Loss function of the training and validation set with data augmentation.}
 \label{fig:Acc_Loss_tuned_aug}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.6]{images/aug-tuned-confusion_matrix.png}
-\caption{Tuned CNN's confusion matrix with data augmentation.}
-\label{fig:cf_tuned_aug}
+\begin{figure}
+  \begin{subfigure}[c]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/aug-2021-confusion_matrix.png}
+      \caption{Simple CNN}
+      \label{fig:cf_2021_aug}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[c]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/aug-tuned-confusion_matrix.png}
+      \caption{Tuned CNN}
+      \label{fig:cf_tuned_aug}
+  \end{subfigure}
+  \caption{CNN's confusion matrix with data augmentation.}
 \end{figure}
-
 
 \begin{table}[ht]
 \centering
