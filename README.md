@@ -18,3 +18,9 @@ The `notebooks` folder contains the .ipynb files while the `project` contains th
 "CNN_audio.ipynb" is used to train a CNN like the one described in the paper by "Daniel Kostrzewa".
 
 "CNN_tuning.ipynb" is used to tune, with Hyperband, a CNN.
+
+"analysis.ipynb" contains the EDA for the raw audio file and the mel spectrograms.
+
+"handcraft_nn.ipynb" is used to train and evaluate the neural network for the handcrafted features.
+
+"features_extraction.ipynb" is used to extract features from a specific layer and evaluate using different classifiers.
