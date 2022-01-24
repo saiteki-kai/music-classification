@@ -25,7 +25,7 @@ The following results were obtained with the following hardware.
 \vspace{4mm}
 
 \subsection{Handcrafted Features}
-\begin{table}[ht]
+\begin{table}
   \centering
   \begin{tabular}{|l|l|l|l|l|}
     \hline
@@ -44,7 +44,7 @@ The following results were obtained with the following hardware.
   \label{table:handcrafted_loss}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}
   \centering
   \begin{tabular}{|l|l|l|l|l|}
     \hline
@@ -63,7 +63,7 @@ The following results were obtained with the following hardware.
   \label{table:handcrafted_accuracy}
 \end{table}
 
-\begin{figure}[ht]
+\begin{figure}
   \includegraphics[width=\textwidth]{images/handcrafted_best.jpg}
   \caption{Loss and Accuracy curves for the best model.}
 \end{figure}
@@ -73,7 +73,7 @@ The following results were obtained with the following hardware.
 \subsection{CNN}
 The following tables compare CNN with and without augmentation and with and without tuning in terms of prediction time, accuracy and loss.
 
-\begin{table}[ht]
+\begin{table}
   \begin{tabular}{|l|l|l|l|}
     \hline
                         & Prediction time (CPU) & Prediction time (GPU) \\ \hline
@@ -86,7 +86,7 @@ The following tables compare CNN with and without augmentation and with and with
   \label{table:pred_time}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}
   \centering
   \begin{tabular}{|l|l|l|l|}
     \hline
@@ -100,7 +100,7 @@ The following tables compare CNN with and without augmentation and with and with
   \label{table:test_CNN}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}
   \centering
   \begin{tabular}{|l|l|l|}
     \hline
@@ -114,7 +114,7 @@ The following tables compare CNN with and without augmentation and with and with
   \label{table:train_CNN}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}
   \centering
   \begin{tabular}{|l|l|l|}
     \hline
@@ -130,21 +130,21 @@ The following tables compare CNN with and without augmentation and with and with
 
 \pagebreak
 
-\begin{figure}[ht]
+\begin{figure}
   \centering
   \includegraphics[scale=0.6]{images/2021-val-train.png}
   \caption{CNN's Accuracy and Loss function of the training and validation set.}
   \label{fig:Acc_Loss_2021}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}
   \centering
   \includegraphics[scale=0.6]{images/tuned-val-train.png}
   \caption{Tuned CNN's Accuracy and Loss function of the training and validation set.}
   \label{fig:Acc_Loss_tuned}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/2021-confusion_matrix.png}
@@ -161,21 +161,21 @@ The following tables compare CNN with and without augmentation and with and with
   \caption{CNN's confusion matrix.}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}
   \centering
   \includegraphics[scale=0.6]{images/aug-2021-val-train.png}
   \caption{CNN's Accuracy and Loss function of the training and validation set with data augmentation.}
   \label{fig:Acc_Loss_2021_aug}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}
   \centering
   \includegraphics[scale=0.6]{images/aug-tuned-val-train.png}
   \caption{Tuned CNN's Accuracy and Loss function of the training and validation set with data augmentation.}
   \label{fig:Acc_Loss_tuned_aug}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/aug-2021-confusion_matrix.png}
@@ -196,7 +196,7 @@ The following tables compare CNN with and without augmentation and with and with
 
 \subsection{Feature Extracted with CNN}
 
-\begin{table}[ht]
+\begin{table}
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|c|ccc|}
@@ -212,7 +212,7 @@ The following tables compare CNN with and without augmentation and with and with
   \label{tab:my-table}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|}
@@ -243,7 +243,7 @@ FC2, PCA=0.90 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 
   \label{tab:my-table2}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|}
@@ -273,7 +273,7 @@ block5\_pool & \{'C': 0.01\} & \{'C': 1, 'gamma': 0.0001\}  & \{'alpha': 0.03, '
   \label{tab:my-table3}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|}
@@ -304,7 +304,7 @@ conv5\_block1\_2\_relu & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha
   \caption{Confusion matrix of the best model for the two CNN architectures.}
 \end{figure}
 
-\begin{table}[ht]
+\begin{table}
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|}

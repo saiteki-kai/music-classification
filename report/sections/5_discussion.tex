@@ -1,20 +1,34 @@
 \section{Discussion}
-
-With the Handcrafted Features, accuracy results on the test set are equal to \textbf{0.495}.
+With the handcrafted features, accuracy results on the test set are equal to \textbf{0.495}. The prediction time is fast as the number of parameters is low compared to CNNs.
 
 Regarding the approach based on spectrograms and Convolutional Neural Networks it is noted how the models predict more or less with the same speed. It is also noticeable that they are all overfitting.
 The optimization of the hyper-parameters also brings greater stability to the validation curve.
 It should also be noted that the data augmentation, in this case, leads the task to be more difficult, thus leading to worse results.
 The best performing CNN model is the one described in the paper by "Daniel Kostrzewa" \cite{kostrzewa2021music}, with an accuracy of \textbf{0.3975}. It is also important to say that the performances obtained are lower than those stated in the paper, which reaches \textbf{0.5163} of accuracy. This could be due to a different pre-processing or a number higher than 50 epochs.
 
-With the approach based on Transfer Learning we have obtained the best results. Using XX leads to \textbf{YY} of accuracy.
+With the approach based on Transfer Learning we have obtained the best results. Using ResNet50 leads to \textbf{0.5012} of accuracy.
 
-Possible ways to improve could be: better data augmentation, optimization of hyper-parameters from start to finish, consider a different loss function and consider a greater number of epochs.
+From the table [\ref{tab:my-table}] it was noted how decreasing the percentage of explained variance allows to obtain better results with a greater reduction.
 
-Other models such as LSTM or RCNN could also be tried, even if the state of the art shows that they are not as performing as CNNs \cite{kostrzewa2021music}.
+From table [\ref{tab:my-table2}] it possible to see how the linear SVM gets worse going to lower layers. Probably because the data becomes less linearly separable.
+The radial SVM instead gets improvements at lower levels, while for the MLP its trend is not clear, probably due to the scarcity of data.
 
+From table [\ref{tab:my-table3}] it is also possible to see here the same effect on the linear SVM as on the radial SVM, while the MLP also improves as you go down in depth.
 
+In the end, the two best models obtained are VGG16 at the \texttt{block5\_pool} level with radial SVM and with an accuracy of 0.4968, while ResNet50 at the \texttt{conv5\_block1\_2\_relu} level with radial SVM with an accuracy of 0.5012.
 
+\noindent
+Comparing the models we can see that the two confusion matrices are very similar as expected from their very similar accuracy.
+What differentiates the two models are the number of parameters 138,357,544 and 25,636,712 and the prediction times of 75.913ms/26.601ms and 54.615ms/27.021ms for respectivly CPU/GPU.
 
-
-
+\vspace{4mm}
+\noindent
+Possible ways to improve could be:
+\begin{itemize}
+  \item Better data augmentation (for example by acting directly on the temporal domain)
+  \item Other subset of the dataset (medium, large)
+  \item Optimization of hyper-parameters from start to finish
+  \item Consider a different loss function and consider a greater number of epochs
+  \item Other features as MFCCs and its derivatives
+  \item Other models such as LSTM or RCNN could also be tried, even if the state of the art shows that they are not as performing as CNNs \cite{kostrzewa2021music}.
+\end{itemize}
