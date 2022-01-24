@@ -6,7 +6,7 @@
 The dataset chosen is the Free Music Archive (FMA) \cite{fma_dataset}.
 The dataset contains 106574 high quality audio tracks lasting approximately 30 seconds. All the tracks are common creative licensed.
 
-Each track is associated with additional information about the artist (name, location, bio, etc.), the album (title, listens, comments, etc.) and the track itself (title, creation date, duration, genres, etc.). 
+Each track is associated with additional information about the artist (name, location, bio, etc.), the album (title, listens, comments, etc.) and the track itself (title, creation date, duration, genres, etc.).
 
 The genres are organized in a hierarchy of 161 unbalanced classes of different genres.
 
@@ -23,20 +23,20 @@ In this work only the small one was used which consists of 8000 tracks and 8 bal
 %   \item Large: 106574 tracks, 161 unbalanced genres
 % \end{itemize}
 
-\subsection{Features}
-% TODO: introduzione al metodo con CNN?
+\subsection{Preprocessing for CNN}
+To use CNN, it was decided to use image spectrograms as input.
+Since the dataset did not provide these features, a brief exploratory data analysis was performed.
 
-Analyzing the raw audio tracks it was found that the sampling frequency varies between 22050Hz and 48000Hz. 
+Analyzing the raw audio tracks it was found that the sampling frequency varies between 22050Hz and 48000Hz.
 Most of the tracks have a sampling rate of 44100Hz.
 It was decided to resample all tracks to 22050Hz.
 
-Furthermore, it has been found that the durations of the audio tracks are not all 30 seconds long.
+Furthermore, it was found that the durations of the audio tracks are not all 30 seconds long.
 The range of duration values that was found was from 0 to 30.02 seconds.
-Then the length was reduced for all tracks to 29.70 seconds and the shorter length samples were removed due to incorrect length metadata.
+Then the length was reduced for all tracks to 29.70 seconds and the shorter length samples were removed due to incorrect length metadata\footnotemark{}.
 
-% TODO: mettere il link? https://github.com/mdeff/fma/wiki#excerpts-shorter-than-30s-and-erroneous-audio-length-metadata
 
-The Mel spectrogram was calculated on the raw audio with the following parameters: 
+The logarithmic Mel spectrogram was calculated on the raw audio with the following parameters:
 \begin{itemize}
   \item Sample rate: 22050Hz
   \item Window Size: 2048
@@ -44,3 +44,12 @@ The Mel spectrogram was calculated on the raw audio with the following parameter
   \item Mel bins: 128
 \end{itemize}
 
+\subsection{Data Augmentation}
+Two new spectrograms were generated from each image of the training split using frequency masking and time masking techniques.
+
+Masking consists of setting a range of pixels to zero in the frequency range or time range.
+
+The pixel range is randomly generated from a uniform distribution. For the frequency (0, 27) was used, while for the time (0, 100) \cite{park2019specaugment}.
+
+\footnotetext{more details: \href{https://github.com/mdeff/fma/wiki\#excerpts-shorter-than-30s-and-erroneous-audio-length-metadata}{excerpts-shorter-than-30s-and-erroneous-audio-length-metadata}}
+\newpage
