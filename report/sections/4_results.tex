@@ -77,12 +77,11 @@ The following tables compare CNN with and without augmentation and with and with
   \begin{tabular}{|l|l|l|l|}
     \hline
                         & Prediction time (CPU) & Prediction time (GPU) \\ \hline
-    CNN                 & 9.29s                 & 4.24s                 \\ \hline
-    CNN augmented       & 9.39s                 & 4.45s                 \\ \hline
-    Tuned CNN           & 9.43s                 & 4.27s                 \\ \hline
-    Tuned CNN augmented & 7.13s                 & 4.68s                 \\ \hline
+    CNN                 & 0.064s                 & 0.042s                 \\ \hline
+    Tuned CNN           & 0.060s                 & 0.043s                 \\ \hline
+    Tuned CNN augmented & 0.061s                 & 0.044s                 \\ \hline
   \end{tabular}
-  \caption{Inference time over 10 runs of the CNN models with batch size of 32.}
+  \caption{Inference time over 10 runs of the same random value for CNN models.}
   \label{table:pred_time}
 \end{table}
 
