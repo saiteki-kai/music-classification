@@ -1,15 +1,32 @@
 \section{Results and Evaluation}
 
+The following results were obtained with the following hardware.\\
+CPU Specifications:
+\begin{itemize}
+\item Intel(R) Xeon(R)
+\item CPU Freq. of 2.30GHz
+\item 4 CPU cores
+\item 16 Gigabytes of RAM
+\end{itemize}
+GPU Specifications:
+\begin{itemize}
+\item Nvidia P100
+\item GPU Memory Clock of 1.32GHz
+\item 2 CPU cores
+\item 12 Gigabytes of RAM
+\end{itemize}
+
+
 \begin{table}[ht]
 \begin{tabular}{|l|l|l|l|}
 \hline
                     & Prediction time (CPU) & Prediction time (GPU) \\ \hline
-CNN                 & 8s                    & 5s                     \\ \hline
-CNN augmented       & 9s                    & 7s                      \\ \hline
-Tuned CNN           & 8s                    & 6s                      \\ \hline
-Tuned CNN augmented & 7s                    & 6s                      \\ \hline
+CNN                 & 9.29s                 & 4.24s                 \\ \hline
+CNN augmented       & 9.39s                 & 4.45s                 \\ \hline
+Tuned CNN           & 9.43s                 & 4.27s                 \\ \hline
+Tuned CNN augmented & 7.13s                 & 4.68s                 \\ \hline
 \end{tabular}
-\caption{Prediction time of the CNN models.}
+\caption{Inference time over 10 runs of the CNN models with batch size of 32.}
 \label{table:pred_time}
 \end{table}
 
