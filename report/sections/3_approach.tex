@@ -18,7 +18,7 @@ The best parameters found were (512, 256).
 Adam was used as an optimizer with a learning rate of 0.0001 and a batch size of 32.
 
 \subsection{Convolutional Neural Network}
-According to the state of the art\cite{zeng2019spectrogram}, the approach that now seems to perform better for these tasks is the one based on MFCC and Convolutional Neural Network. 
+According to the state of the art\cite{zeng2019spectrogram}, the approach that now seems to perform better for these tasks is the one based on MFCs and Convolutional Neural Networks. 
 
 We started with the architecture suggested by "Daniel Kostrzewa" \cite{kostrzewa2021music}.
 "Layer 1 and 2 have both 64 kernels each, whereas layers 3 and 4 have 128 kernels. The kernel size of all layers is equal to 5. After each layer, there is 2-D max pooling applied with kernel size and stride equal 2. In every convolutional layer, ReLU is used as an activation function. Batch normalization is performed afterward. The convolutional layers are followed by one fully connected linear layer with linear activation function and the final output of 8 nodes" \cite{kostrzewa2021music}. Dropout probability is 0.20 . The number of trainable parameters is 735 944.
@@ -40,6 +40,8 @@ The hyper-parameters considered for the optimization were:
     \item The probability of dropout in \{0.2, 0.25, 0.5\}.
     \item The initial learning rate in \{0.01, 0.001, 0.0001\}.
 \end{itemize}
+
+By basing the optimization of the hyper-parameters on the results obtained from the validation set we are creating a bias towards the validation set. In this case a test set has been provided so this problem is not going to weigh much but still it's something that needs to be kept into account. \\
 
 The optimization of the network has led to have, in the case without date augmentation, the first layer with 32 kernels, the second one with 128, the third with 192 and the fourth with 98. The kernel size of all layers is equal to 6. Dropout probability is 0.25 and initial learning rate is 0.001.
 
