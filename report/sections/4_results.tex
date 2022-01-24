@@ -1,41 +1,56 @@
 \section{Results and Evaluation}
-The Results section is dedicated to presenting the actual results (i.e. measured and calculated quantities), not to discussing their meaning or interpretation.
-The results should be summarized using appropriate Tables and Figures (graphs or schematics).
-Every Figure and Table should have a legend that describes concisely what is contained or shown.
-Figure legends go below the figure, table legends above the table.
-Throughout the report, but especially in this section, pay attention to reporting numbers with an appropriate number of significant figures.
-
-\begin{table}[ht]
-\begin{tabular}{|l|l|l|l|l|}
-\hline
-                    & Test accuracy   & Test F1 & Test Loss \\ \hline
-CNN                 & \textbf{0.3975} & 0.2414  & 3.7596    \\ \hline
-CNN augmented       & 0.3225          & 0.2414  & 8.0137    \\ \hline
-Tuned CNN           & 0.3900          & 0.2414  & 2.3860    \\ \hline
-Tuned CNN augmented & 0.3787          & 0.2414  & 2.0166    \\ \hline
-\end{tabular}
-\end{table}
 
 \begin{table}[ht]
 \begin{tabular}{|l|l|l|l|}
 \hline
-                    & Train accuracy & Train F1 & Train Loss \\ \hline
-CNN                 & 0.9998         & 0.2414   & 0.0011     \\ \hline
-CNN augmented       & 0.9968         & 0.2414   & 0.0101     \\ \hline
-Tuned CNN           & 0.9998         & 0.2414   & 0.0065     \\ \hline
-Tuned CNN augmented & 0.8073         & 0.2414   & 0.6131     \\ \hline
+                    & Prediction time  \\ \hline
+CNN                 & 5s \\ \hline
+CNN augmented       & 7s \\ \hline
+Tuned CNN           & 9s \\ \hline
+Tuned CNN augmented & 12s \\ \hline
 \end{tabular}
+\caption{Prediction time of the CNN models.}
+\label{table:pred_time}
 \end{table}
+
 
 \begin{table}[ht]
 \begin{tabular}{|l|l|l|l|}
 \hline
-                    & Validation accuracy & Validation F1 & Validation Loss \\ \hline
-CNN                 & 0.4663              & 0.2414        & 2.9336          \\ \hline
-CNN augmented       & 0.3938              & 0.2414        & 5.6310          \\ \hline
-Tuned CNN           & 0.4175              & 0.2414        & 2.0767          \\ \hline
-Tuned CNN augmented & 0.4450              & 0.2414        & 1.7493          \\ \hline
+                    & Test accuracy   & Test Loss \\ \hline
+CNN                 & \textbf{0.3975} & 3.7596    \\ \hline
+CNN augmented       & 0.3225          & 8.0137    \\ \hline
+Tuned CNN           & 0.3900          & 2.3860    \\ \hline
+Tuned CNN augmented & 0.3787          & 2.0166    \\ \hline
 \end{tabular}
+\caption{Test accuracy and loss of the CNN models.}
+\label{table:test_CNN}
+\end{table}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+                    & Train accuracy & Train Loss \\ \hline
+CNN                 & 0.9998         & 0.0011     \\ \hline
+CNN augmented       & 0.9968         & 0.0101     \\ \hline
+Tuned CNN           & 0.9998         & 0.0065     \\ \hline
+Tuned CNN augmented & 0.8073         & 0.6131     \\ \hline
+\end{tabular}
+\caption{Train accuracy and loss of the CNN models.}
+\label{table:train_CNN}
+\end{table}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+                    & Validation accuracy & Validation Loss \\ \hline
+CNN                 & 0.4663              & 2.9336          \\ \hline
+CNN augmented       & 0.3938              & 5.6310          \\ \hline
+Tuned CNN           & 0.4175              & 2.0767          \\ \hline
+Tuned CNN augmented & 0.4450              & 1.7493          \\ \hline
+\end{tabular}
+\caption{Validation accuracy and loss of the CNN models.}
+\label{table:validation_CNN}
 \end{table}
 
 \begin{figure}[ht]
