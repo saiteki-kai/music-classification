@@ -25,7 +25,7 @@ The following results were obtained with the following hardware.
 \vspace{4mm}
 
 \subsection{Handcrafted Features}
-\begin{table}
+\begin{table}[ht]
   \centering
   \begin{tabular}{|l|l|l|l|l|}
     \hline
@@ -44,7 +44,7 @@ The following results were obtained with the following hardware.
   \label{table:handcrafted_loss}
 \end{table}
 
-\begin{table}
+\begin{table}[ht]
   \centering
   \begin{tabular}{|l|l|l|l|l|}
     \hline
@@ -63,6 +63,8 @@ The following results were obtained with the following hardware.
   \label{table:handcrafted_accuracy}
 \end{table}
 
+\newpage
+
 \begin{figure}
   \includegraphics[width=\textwidth]{images/handcrafted_best.jpg}
   \caption{Loss and Accuracy curves for the best model.}
@@ -73,19 +75,19 @@ The following results were obtained with the following hardware.
 \subsection{CNN}
 The following tables compare CNN with and without augmentation and with and without tuning in terms of prediction time, accuracy and loss.
 
-\begin{table}
+\begin{table}[ht]
   \begin{tabular}{|l|l|l|l|}
     \hline
                         & Prediction time (CPU) & Prediction time (GPU) \\ \hline
-    CNN                 & 0.064s                 & 0.042s                 \\ \hline
-    Tuned CNN           & 0.060s                 & 0.043s                 \\ \hline
-    Tuned CNN augmented & 0.061s                 & 0.044s                 \\ \hline
+    CNN                 & 0.064s                & 0.042s                \\ \hline
+    Tuned CNN           & 0.060s                & 0.043s                \\ \hline
+    Tuned CNN augmented & 0.061s                & 0.044s                \\ \hline
   \end{tabular}
   \caption{Inference time over 10 runs of the same random value for CNN models.}
   \label{table:pred_time}
 \end{table}
 
-\begin{table}
+\begin{table}[ht]
   \centering
   \begin{tabular}{|l|l|l|l|}
     \hline
@@ -99,7 +101,9 @@ The following tables compare CNN with and without augmentation and with and with
   \label{table:test_CNN}
 \end{table}
 
-\begin{table}
+\newpage
+
+\begin{table}[ht]
   \centering
   \begin{tabular}{|l|l|l|}
     \hline
@@ -113,7 +117,7 @@ The following tables compare CNN with and without augmentation and with and with
   \label{table:train_CNN}
 \end{table}
 
-\begin{table}
+\begin{table}[ht]
   \centering
   \begin{tabular}{|l|l|l|}
     \hline
@@ -127,23 +131,41 @@ The following tables compare CNN with and without augmentation and with and with
   \label{table:validation_CNN}
 \end{table}
 
-\pagebreak
+\newpage
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \includegraphics[scale=0.6]{images/2021-val-train.png}
   \caption{CNN's Accuracy and Loss function of the training and validation set.}
   \label{fig:Acc_Loss_2021}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \includegraphics[scale=0.6]{images/tuned-val-train.png}
   \caption{Tuned CNN's Accuracy and Loss function of the training and validation set.}
   \label{fig:Acc_Loss_tuned}
 \end{figure}
 
-\begin{figure}
+\newpage
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.6]{images/aug-2021-val-train.png}
+  \caption{CNN's Accuracy and Loss function of the training and validation set with data augmentation.}
+  \label{fig:Acc_Loss_2021_aug}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.6]{images/aug-tuned-val-train.png}
+  \caption{Tuned CNN's Accuracy and Loss function of the training and validation set with data augmentation.}
+  \label{fig:Acc_Loss_tuned_aug}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/2021-confusion_matrix.png}
@@ -160,21 +182,8 @@ The following tables compare CNN with and without augmentation and with and with
   \caption{CNN's confusion matrix.}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.6]{images/aug-2021-val-train.png}
-  \caption{CNN's Accuracy and Loss function of the training and validation set with data augmentation.}
-  \label{fig:Acc_Loss_2021_aug}
-\end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.6]{images/aug-tuned-val-train.png}
-  \caption{Tuned CNN's Accuracy and Loss function of the training and validation set with data augmentation.}
-  \label{fig:Acc_Loss_tuned_aug}
-\end{figure}
-
-\begin{figure}
+\begin{figure}[ht]
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/aug-2021-confusion_matrix.png}
@@ -192,10 +201,9 @@ The following tables compare CNN with and without augmentation and with and with
 \end{figure}
 
 \newpage
-
 \subsection{Feature Extracted with CNN}
 
-\begin{table}
+\begin{table}[ht]
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|c|ccc|}
@@ -207,26 +215,25 @@ The following tables compare CNN with and without augmentation and with and with
       Fc2                        & 4096                  & 153                             & 0.9                        & VGG16                  & \multicolumn{1}{c|}{0.5099/0.4586} & \multicolumn{1}{c|}{0.5195/0.4617} & 0.4920/0.4398 \\ \hline
     \end{tabular}%
   }
-  \caption{results of the fc2 cut level of VGG16 with different classifier and different values of pca.}
+  \caption{Results of the FC2 cut level of VGG16 with different classifier and different values of PCA.}  \label{tab:my-table}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      N             & svm linear    & svm rbf                      & mlp                                                   \\ \hline
+      FC2, PCA 0.99 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.03, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
+      FC2, PCA 0.95 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
+      FC2, PCA 0.90 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
+    \end{tabular}%
+  }
+  \caption{Hyperparameters results for the VGG16 FC2 with different values of pca.}
   \label{tab:my-table}
 \end{table}
 
-\begin{table}
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|}
-\hline
-N             & svm linear    & svm rbf                      & mlp                                                   \\ \hline
-FC2, PCA=0.99 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.03, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
-FC2, PCA=0.95 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
-FC2, PCA=0.90 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
-\end{tabular}%
-}
-\caption{hyperparameters result for the VGG16 FC2 with different values of pca.}
-\label{tab:my-table}
-\end{table}
-
-\begin{table}
+\begin{table}[ht]
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|ccc|}
@@ -242,22 +249,22 @@ FC2, PCA=0.90 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 
   \label{tab:my-table2}
 \end{table}
 
-\begin{table}
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|}
-\hline
-Cut Level    & svm linear    & svm rbf                      & mlp                                                   \\ \hline
-Fc2          & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
-Fc1          & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
-block5\_pool & \{'C': 0.01\} & \{'C': 1, 'gamma': 0.0001\}  & \{'alpha': 0.03, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
-\end{tabular}%
-}
-\caption{hyperparameters result for different cut level of VGG16 with PCA=0.90.}
-\label{tab:my-table}
+\begin{table}[ht]
+  \centering
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      Cut Level    & svm linear    & svm rbf                      & mlp                                                   \\ \hline
+      Fc2          & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
+      Fc1          & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
+      block5\_pool & \{'C': 0.01\} & \{'C': 1, 'gamma': 0.0001\}  & \{'alpha': 0.03, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
+    \end{tabular}%
+  }
+  \caption{Hyperparameters result for different cut level of VGG16 with PCA 90\%.}
+  \label{tab:my-table}
 \end{table}
 
-\begin{table}
+\begin{table}[ht]
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|ccc|}
@@ -272,21 +279,23 @@ block5\_pool & \{'C': 0.01\} & \{'C': 1, 'gamma': 0.0001\}  & \{'alpha': 0.03, '
   \label{tab:my-table3}
 \end{table}
 
-\begin{table}
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|}
-\hline
-Cut Level              & svm linear    & svm rbf                      & mlp                                                  \\ \hline
-avg\_pool              & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\} \\ \hline
-conv5\_block1\_2\_relu & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.01, 'hidden\_layer\_sizes': (512,)\}    \\ \hline
-\end{tabular}%
-}
-\caption{hyperparameters result for different cut of ResNet50 with PCA=0.90.}
-\label{tab:my-table}
+\newpage
+
+\begin{table}[ht]
+  \centering
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      Cut Level              & svm linear    & svm rbf                      & mlp                                                  \\ \hline
+      avg\_pool              & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\} \\ \hline
+      conv5\_block1\_2\_relu & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.01, 'hidden\_layer\_sizes': (512,)\}    \\ \hline
+    \end{tabular}%
+  }
+  \caption{Hyperparameters result for different cut of ResNet50 with PCA 90\%.}
+  \label{tab:my-table}
 \end{table}
 
-\begin{figure}
+\begin{figure}[ht]
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/best_vgg16_svmrbf.jpg}
@@ -303,17 +312,18 @@ conv5\_block1\_2\_relu & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha
   \caption{Confusion matrix of the best model for the two CNN architectures.}
 \end{figure}
 
-\begin{table}
+\begin{table}[ht]
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|}
       \hline
       Model          & Test Time(CPU) & Test Time(GPU) & svm rbf   \\ \hline
-      vgg16\_best    & 73.2190 ms     & 23.9014 ms      & 2.6992 ms \\ \hline
-      resnet50\_best & 51.3436 ms     & 23.7502 ms      & 3.2712 ms \\ \hline
+      vgg16\_best    & 73.2190 ms     & 23.9014 ms     & 2.6992 ms \\ \hline
+      resnet50\_best & 51.3436 ms     & 23.7502 ms     & 3.2712 ms \\ \hline
     \end{tabular}%
   }
   \caption{inference time for the best cut level and ml classifier for vgg16 and resnet50.}
   \label{tab:my-table4}
 \end{table}
 
+\newpage
