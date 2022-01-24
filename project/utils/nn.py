@@ -29,12 +29,12 @@ def plot_history(history, save=False, filepath=None):
 
 def prediction_time(model, input_shape, device_name="/cpu:0"):
     dummy_example = np.random.randn(1, *input_shape)
+    times = []
     with tf.device(device_name):
-        times = []
         for i in range(10):
             start = time.perf_counter()
-            model.predict(dummy_example, batch_size=32)
+            model.predict(dummy_example, batch_size=1)
             end = time.perf_counter() - start
             times.append(end)
         times = np.asarray(times)
-        print(np.mean(times) * 1000)
+    return np.mean(times) * 1000
