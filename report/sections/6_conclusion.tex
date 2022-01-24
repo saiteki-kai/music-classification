@@ -9,6 +9,6 @@ This path was found to be the worst, obtaining 0.3900 without data augmentation 
 Finally, considering the quantity of data available and the results previously obtained, transfer learning were tried.
 Two Top-5 accuracy CNN on imagenet were used to do feature extractions.
 The extracted features were reduced in size with PCA, which has been shown to improve the results.
-In the end the best model obtained was the one using ResNet50 at cut \texttt{conv5\_block1\_2\_relu} with radial SVM, which has fewer parameters than VGG16 and is faster, with accuracy of 0.5012, reaching results similar to the paper previously cited 0.5163.
+In the end the best model obtained was the one using ResNet50 at cut \texttt{conv5\_block1\_2\_relu} with radial SVM, which has fewer parameters than VGG16 and is faster, with accuracy of 0.5012, reaching results close to 0.5163, that are achieved by the paper previously cited .
 The use of spectograms with CNNs was proved to be the best method in the literature to deal with this task.
 In order to obtain better results, however, a greater amount of data is required.
