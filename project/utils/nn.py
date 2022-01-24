@@ -1,7 +1,10 @@
 import matplotlib.pyplot as plt
+import tensorflow as tf
+import numpy as np
+import time
 
 
-def plot_history(history):
+def plot_history(history, save=False, filepath=None):
     x_plot = list(range(1, len(history["loss"]) + 1))
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
@@ -19,3 +22,19 @@ def plot_history(history):
     ax2.legend(["Training", "Validation"], loc="lower right")
 
     fig.show()
+
+    if save and filepath is not None:
+        fig.savefig(filepath)
+
+
+def prediction_time(model, input_shape, device_name="/cpu:0"):
+    dummy_example = np.random.randn(1, *input_shape)
+    times = []
+    with tf.device(device_name):
+        for i in range(10):
+            start = time.perf_counter()
+            model.predict(dummy_example, batch_size=1)
+            end = time.perf_counter() - start
+            times.append(end)
+        times = np.asarray(times)
+    return np.mean(times) * 1000
