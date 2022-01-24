@@ -213,6 +213,21 @@ The following tables compare CNN with and without augmentation and with and with
 \end{table}
 
 \begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|}
+\hline
+N             & svm linear    & svm rbf                      & mlp                                                   \\ \hline
+FC2, PCA=0.99 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.03, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
+FC2, PCA=0.95 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
+FC2, PCA=0.90 & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
+\end{tabular}%
+}
+\caption{hyperparameters result for the VGG16 FC2 with different values of pca.}
+\label{tab:my-table}
+\end{table}
+
+\begin{table}
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|ccc|}
@@ -229,6 +244,21 @@ The following tables compare CNN with and without augmentation and with and with
 \end{table}
 
 \begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|}
+\hline
+Cut Level    & svm linear    & svm rbf                      & mlp                                                   \\ \hline
+Fc2          & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
+Fc1          & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\}  \\ \hline
+block5\_pool & \{'C': 0.01\} & \{'C': 1, 'gamma': 0.0001\}  & \{'alpha': 0.03, 'hidden\_layer\_sizes': (512, 256)\} \\ \hline
+\end{tabular}%
+}
+\caption{hyperparameters result for different cut level of VGG16 with PCA=0.90.}
+\label{tab:my-table}
+\end{table}
+
+\begin{table}
   \centering
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|ccc|}
@@ -243,7 +273,21 @@ The following tables compare CNN with and without augmentation and with and with
   \label{tab:my-table3}
 \end{table}
 
-\begin{figure}[ht]
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|}
+\hline
+Cut Level              & svm linear    & svm rbf                      & mlp                                                  \\ \hline
+avg\_pool              & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.05, 'hidden\_layer\_sizes': (512, 32)\} \\ \hline
+conv5\_block1\_2\_relu & \{'C': 0.01\} & \{'C': 10, 'gamma': 0.0001\} & \{'alpha': 0.01, 'hidden\_layer\_sizes': (512,)\}    \\ \hline
+\end{tabular}%
+}
+\caption{hyperparameters result for different cut of ResNet50 with PCA=0.90.}
+\label{tab:my-table}
+\end{table}
+
+\begin{figure}
   \begin{subfigure}[c]{0.475\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/best_vgg16_svmrbf.jpg}
